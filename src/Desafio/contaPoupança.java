@@ -1,17 +1,14 @@
 package Desafio;
 
-public class contaPoupança {
-    private int agencia;
-    private int numero;
-    private double saldo;
-
-    public void sacar(){
-
+public class contaPoupança extends conta{
+    public contaPoupança(Desafio.cliente cliente) {
+        super(cliente);
     }
-    public void depositar(){
 
+    @Override
+    public void imprimirExtrato() {
+        System.out.println("===Extrato Conta Poupança ===");
+        imprimirInfosComuns();
     }
-    public void transferir(){
 
-    }
 }

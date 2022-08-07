@@ -2,13 +2,19 @@ package Desafio;
 
 public abstract class conta implements IConta {
 
-    protected static final int AGENCIA_PADRAO = 1;
+    private static final int AGENCIA_PADRAO = 1;
+    private static int SEQUENCIAL =1;
+
     protected int agencia;
     protected int numero;
     protected double saldo;
+    protected cliente cliente;
 
-
-
+    public conta(cliente cliente){
+        this.agencia = conta.AGENCIA_PADRAO;
+        this.numero = SEQUENCIAL++;
+        this.cliente =cliente;
+    }
     public void sacar() {
 
     }
@@ -33,16 +39,24 @@ public abstract class conta implements IConta {
 
     @Override
     public void sacar(double valor) {
-
+        saldo -= valor;
     }
 
     @Override
     public void depositar(double valor) {
-
+        saldo += valor;
     }
 
     @Override
-    public void transeferir(double valor, conta conaDestino) {
+    public void transeferir(double valor, conta contaDestino) {
+        this.sacar(valor);
+        contaDestino.depositar(valor);
+    }
 
+    void imprimirInfosComuns() {
+        System.out.println(String.format("Titular: %s", this.cliente.getNome()));
+        System.out.println(String.format("Agência: %d", this.agencia));
+        System.out.println(String.format("Numero: %d", this.numero));
+        System.out.println(String.format("Saldo: %.2f", this.saldo));
     }
 }

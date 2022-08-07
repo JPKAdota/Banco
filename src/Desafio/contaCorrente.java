@@ -1,10 +1,13 @@
 package Desafio;
 
 public class contaCorrente extends conta{
-    private static int SEQUENCIAL =1;
+    public contaCorrente(Desafio.cliente cliente) {
+        super(cliente);
+    }
 
-    public contaCorrente(){
-        super.agencia = conta.AGENCIA_PADRAO;
-        super.numero = SEQUENCIAL++;
+    @Override
+    public void imprimirExtrato() {
+        System.out.println("===Estrto Conta Corrente ===");
+        super.imprimirInfosComuns();
     }
 }
