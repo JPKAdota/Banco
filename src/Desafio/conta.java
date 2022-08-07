@@ -1,9 +1,11 @@
 package Desafio;
 
 public abstract class conta implements IConta {
-    private int agencia;
-    private int numero;
-    private double saldo;
+
+    protected static final int AGENCIA_PADRAO = 1;
+    protected int agencia;
+    protected int numero;
+    protected double saldo;
 
 
 
